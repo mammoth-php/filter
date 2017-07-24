@@ -74,7 +74,7 @@ class Filter {
                return filter_var($data, FILTER_SANITIZE_EMAIL);
             break;
             case 'float': 
-               return filter_var($data, FILTER_SANITIZE_NUMBER_FLOAT);
+               return filter_var($data, FILTER_SANITIZE_NUMBER_FLOAT, $subitem[1] = NULL);
             break;
             case 'int': 
                return filter_var($data, FILTER_SANITIZE_NUMBER_INT);
@@ -89,7 +89,7 @@ class Filter {
                 return password_hash($data, PASSWORD_BCRYPT, $subitem[1]  = NULL);
             break;
             case 'raw':
-                return filter_var($data, FILTER_DEFAULT);
+                return filter_var($data, FILTER_DEFAULT, $subitem[1]  = NULL);
             break;
             case 'round':
                 return round($data, $subitem[1]  = NULL);
@@ -98,7 +98,7 @@ class Filter {
                 return sha1($data, $subitem[1]  = NULL);
             break;
             case 'string':
-                return filter_var($data, FILTER_SANITIZE_STRING);
+                return filter_var($data, FILTER_SANITIZE_STRING, $subitem[1]  = NULL);
             break;
             case 'striptags':
                 return strip_tags($data, $subitem[1]  = NULL);
