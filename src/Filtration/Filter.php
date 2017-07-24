@@ -67,6 +67,9 @@ class Filter {
             case 'crypt': 
                return crypt($data, $subitem[1] = NULL);
             break;
+            case 'date': 
+               return date($subitem[1], strtotime($data));
+            break;
             case 'email': 
                return filter_var($data, FILTER_SANITIZE_EMAIL);
             break;
