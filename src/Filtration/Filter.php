@@ -8,7 +8,7 @@ class Filter {
     
     /**
      * -------------------------------------------------------------------------
-     * Setando/Definindo regras para determinados dados.
+     * Setando/Definindo filtros para determinados dados.
      * -------------------------------------------------------------------------
      * 
      * @param array $datas
@@ -27,7 +27,7 @@ class Filter {
     
     /**
      * -------------------------------------------------------------------------
-     * Definindo mais de uma regra para um determinado dado.
+     * Definindo mais de um filtro para um determinado dado.
      * -------------------------------------------------------------------------
      * 
      * @param type $data
@@ -46,7 +46,7 @@ class Filter {
     
     /**
      * -------------------------------------------------------------------------
-     * Regras de validação para os dados.
+     * Tipos de filtragem para os dados.
      * ------------------------------------------------------------------------- 
      * 
      * @param type $condition
@@ -114,6 +114,9 @@ class Filter {
             break;
             case 'url':
                 return filter_var($data, FILTER_SANITIZE_URL);
+            break;
+            case 'url_encode':
+                return filter_var($data, FILTER_SANITIZE_ENCODED, $subitem[1] = NULL);
             break;
         }
     }
