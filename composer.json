@@ -1,6 +1,6 @@
 {
     "name": "mammoth-php/filter",
-    "description": "Uma classe de filtração baseada em PHP que permite filtrar quaisquer dados com facilidade, simplicidade e dinamicamente.",
+    "description": "Uma classe de filtração baseada em PHP que permite filtrar quaisquer dados com facilidade e simplicidade.",
     "keywords": ["php-7", "filter", "filters", "filtration"],
     "authors": [
       {
