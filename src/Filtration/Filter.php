@@ -65,7 +65,7 @@ class Filter {
                return ucfirst($data);
             break;
             case 'crypt': 
-               return crypt($data, $subitem[1]);
+               return crypt($data, $subitem[1] = NULL);
             break;
             case 'email': 
                return filter_var($data, FILTER_SANITIZE_EMAIL);
@@ -80,31 +80,31 @@ class Filter {
                return strtolower($data);
             break;
             case 'md5': 
-               return md5($data, $subitem[1]);
+               return md5($data, $subitem[1]  = NULL);
             break;
             case 'pw_hash':
-                return password_hash($data, PASSWORD_BCRYPT, $subitem[1]);
+                return password_hash($data, PASSWORD_BCRYPT, $subitem[1]  = NULL);
             break;
             case 'raw':
                 return filter_var($data, FILTER_DEFAULT);
             break;
             case 'round':
-                return round($data, $subitem[1]);
+                return round($data, $subitem[1]  = NULL);
             break;
             case 'sha1':
-                return sha1($data, $subitem[1]);
+                return sha1($data, $subitem[1]  = NULL);
             break;
             case 'string':
                 return filter_var($data, FILTER_SANITIZE_STRING);
             break;
             case 'striptags':
-                return strip_tags($data, $subitem[1]);
+                return strip_tags($data, $subitem[1]  = NULL);
             break;
             case 'title':
-                return ucwords($data, $subitem[1]);
+                return ucwords($data, $subitem[1]  = NULL);
             break;
             case 'trim':
-                return trim($data, $subitem[1]);
+                return trim($data, $subitem[1]  = NULL);
             break;
             case 'upper':
                 return strtoupper($data);
