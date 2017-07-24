@@ -6,14 +6,14 @@
     
     $datas = [
         'nome'  => '  mammoth  ',
-        'url'   => '  http://www.mammoth-php.com  ',
+        'url'   => '  Http://www.mammoth-php.com  ',
         'email' => '  Mammoth.Support@web.com  ',
         'senha' => '  mammoth.web@2017  '
     ];
             
     $filters = [
         'nome'  => 'trim|upper',
-        'url'   => 'trim|url',
+        'url'   => 'trim|lower|url',
         'email' => 'trim|email|lower',
         'senha' => 'trim|md5:true'
     ];
