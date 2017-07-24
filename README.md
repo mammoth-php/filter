@@ -1,50 +1,46 @@
-# Validator
+# Filter
 
-O Validator é uma classe de validação baseada em PHP que permite validar quaisquer dados.
+O Filter é uma classe de filtragem baseada em PHP que permite filtrar quaisquer dados.
 
 # Instalação
 
 via composer.
 
 ```
-$ composer require mammoth-php/validation
+$ composer require mammoth-php/filter
 ``` 
 
-# Exemplo de Validação dos dados
+# Exemplo de Filtragem dos dados
 
 ###### Dados
 
 ``` php
 $datas = [
-   'nome'  => 'Mauricio',
-   'email' => 'mauricio.msp@mail.com',
-   'senha' => '123456'
+   'nome'  => ' mammoth ',
+   'email' => ' Mammoth.Support@Web.com ',
+   'senha' => ' mammoth.web '
 ];
 ```
 
-###### Regras
+###### Filtros
 
 ``` php
-$rules = [
-   'nome'  => 'required|regex:/^[a-zA-Z]+$/',
-   'email' => 'required|email|max:50',
-   'senha' => 'required|min:8|max:12'
+$filters = [
+   'nome'  => 'trim|capitalize',
+   'email' => 'trim|lower|email',
+   'senha' => 'trim|pw_hash:12'
 ];
  ```
  
- ###### Validando os dados de acordo com as regras
+ ###### Validando os dados de acordo com os filtros
  
  ``` php
-   $validator = new Mammoth\Validation\Validator();
+   $filter = new Mammoth\Filtration\Filter();
 
-   $validator->set($datas, $rules);
+   $filter->set($datas, $rules);
    
-   //Verificando a validação
-   if(!$validator->getErros()){
-        echo 'Dados válidados com sucesso!';
-    } else {
-        var_dump($validator->getErros());
-    }
+   // Verificar se houve as mudanças
+   var_dump($datas);
  ```
  
  # Usando
@@ -53,29 +49,25 @@ $rules = [
  <?php
  
     require 'vendor/autoload.php';
-   
-    $validator = new Mammoth\Validation\Validator();
+    
+    $filter = new Mammoth\Filtration\Filter();
     
     $datas = [
-        'nome'  => 'mauricio',
-        'email' => 'mauricio.web@gmail.com',
-        'senha' => '12345678'
+        'nome'  => '  mammoth  ',
+        'email' => '  Mammoth.Support@web.com  ',
+        'senha' => '  mammoth.web  '
     ];
     
-    $validator->set($datas, [
-        'nome'  => 'required|regex:/^[a-zA-Z]+$/',
-        'email' => 'required|email|max:50',
-        'senha' => 'required|min:8|max:12'
+    $filter->set($datas, [
+        'nome'  => 'trim|capitalize',
+        'email' => 'trim|lower|email',
+        'senha' => 'trim|pw_hash:12'
     ]);
     
-    if(!$validator->getErros()){
-        echo 'Dados válidados com sucesso!';
-    } else {
-        var_dump($validator->getErros());
-    }
+    var_dump($datas);
 ```
 
-# Tipos de validação
+# Tipos de filtros
 
 ``` php
 - required              // Campo obrigatório
@@ -93,4 +85,4 @@ $rules = [
 
 # Licença
 
-O validator é uma aplicação open-source licenciado sob a [licença MIT](https://opensource.org/licenses/MIT).
+O filter é uma aplicação open-source licenciado sob a [licença MIT](https://opensource.org/licenses/MIT).
