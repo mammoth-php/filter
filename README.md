@@ -69,8 +69,10 @@ $filters = [
 
 # Tipos de filtros
 
-* email:          ` Remove todos os caracteres, exceto letras, dígitos e ! # $% & '* + - =? ^ _ {|} ~ @. [] .`              
+* email:          ` Remove todos os caracteres, exceto letras, dígitos e ! # $% & '* + - =? ^ _ {|} ~ @. [] .` 
+* escape:         ` '"<> & e caracteres com valor ASCII inferior a 32, opcionalmente tira ou codifica outros caracteres especiais. `
 * float:          ` Remove todos os caracteres, exceto os dígitos, + - e, opcionalmente , eE .`  
+* html_entities:  ` Converte todos os caracteres aplicáveis em entidades html. `
 * int:            ` Remove todos os caracteres, exceto dígitos, sinal de mais e menos. `
 * string:         ` Etiquetas de tira, opcionalmente tira ou codifica caracteres especiais. ` 
 * url:            ` Remove todos os caracteres, exceto letras, dígitos e $ -_. +! * '(), {} | \\ ^ ~ [] <> #%"; /?: @ & = .`  
@@ -80,13 +82,14 @@ $filters = [
 # Outros filtros
 
 * capitalize:     ` Transforma a inicial da palavra ou frase em maiúscula. `                         
-* date:           ` Define um formato de data para o valor do dado. ` `Ex: date:d/m/Y `     
+* date_format:    ` Define um formato de data para o valor do dado. ` `Ex: date:d/m/Y `     
 * lower:          ` Transforma a palavra ou frase em minúsculo. `    
 * round:          ` Arrendonda um valor com uma precisão. `  `Ex: round:2  `  
 * strip_tags:     ` Retira as tags HTML e PHP de uma string.  `           
 * title:          ` Transforma as iniciais de cada palavra ou frase em maiúsculas. `
 * trim:           ` Retira espaço no ínicio e final de uma string. `
 * upper:          ` Transforma a palavra ou frase em maiúsculas. `
+* whole_number:   ` Retorna o valor inteiro da variável, usando a base especificada para a conversão (o padrão é a base 10). `
 
 # Filtros para criptografia
 
