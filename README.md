@@ -70,7 +70,7 @@ $filters = [
 # Tipos de filtros
 
 * email:          ` Remove todos os caracteres, exceto letras, dígitos e ! # $% & '* + - =? ^ _ {|} ~ @. [] .` 
-* escape:         ` '"<> & e caracteres com valor ASCII inferior a 32, opcionalmente tira ou codifica outros caracteres especiais. `
+* escape:         ` Remove '"<> & e caracteres com valor ASCII inferior a 32, além de codificar outros caracteres. `
 * float:          ` Remove todos os caracteres, exceto os dígitos, + - e, opcionalmente , eE .`  
 * html_entities:  ` Converte todos os caracteres aplicáveis em entidades html. `
 * int:            ` Remove todos os caracteres, exceto dígitos, sinal de mais e menos. `
