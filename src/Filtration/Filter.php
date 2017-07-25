@@ -42,6 +42,7 @@ class Filter {
      * Definindo mais de um filtro para um determinado dado.
      * -------------------------------------------------------------------------
      * 
+     * @param type $filterKey
      * @param type $filterValue
      */
     
@@ -61,6 +62,7 @@ class Filter {
      * ------------------------------------------------------------------------- 
      * 
      * @param type $condition
+     * @param type $filterKey
      */
     
     
