@@ -66,7 +66,7 @@ class Filter {
                $this->dataReturn[$filterKey] = ucfirst($this->dataReturn[$filterKey]);
             break;
             case 'crypt': 
-               $this->dataReturn[$filterKey] = crypt($this->dataReturn[$filterKey], $subitem[1] = NULL);
+               $this->dataReturn[$filterKey] = crypt($this->dataReturn[$filterKey]);
             break;
             case 'date': 
                $this->dataReturn[$filterKey] = date($subitem[1], strtotime($this->dataReturn[$filterKey]));
@@ -75,7 +75,7 @@ class Filter {
                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_EMAIL);
             break;
             case 'float': 
-               $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_NUMBER_FLOAT, $subitem[1] = NULL);
+               $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_NUMBER_FLOAT);
             break;
             case 'int': 
                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_NUMBER_INT);
@@ -84,31 +84,31 @@ class Filter {
                $this->dataReturn[$filterKey] = strtolower($this->dataReturn[$filterKey]);
             break;
             case 'md5': 
-               $this->dataReturn[$filterKey] = md5($this->dataReturn[$filterKey], $subitem[1]  = NULL);
+               $this->dataReturn[$filterKey] = md5($this->dataReturn[$filterKey]);
             break;
             case 'pw_hash':
-                $this->dataReturn[$filterKey] = password_hash($this->dataReturn[$filterKey], PASSWORD_BCRYPT, $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = password_hash($this->dataReturn[$filterKey], PASSWORD_BCRYPT);
             break;
             case 'raw':
-                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_DEFAULT, $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_DEFAULT);
             break;
             case 'round':
-                $this->dataReturn[$filterKey] = round($this->dataReturn[$filterKey], $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = round($this->dataReturn[$filterKey], $subitem[1] ?? 0);
             break;
             case 'sha1':
-                $this->dataReturn[$filterKey] = sha1($this->dataReturn[$filterKey], $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = sha1($this->dataReturn[$filterKey], $subitem[1] ?? FALSE);
             break;
             case 'string':
-                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_STRING, $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_STRING);
             break;
             case 'striptags':
-                $this->dataReturn[$filterKey] = strip_tags($this->dataReturn[$filterKey], $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = strip_tags($this->dataReturn[$filterKey], $subitem[1] ?? ' ');
             break;
             case 'title':
-                $this->dataReturn[$filterKey] = ucwords($this->dataReturn[$filterKey], $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = ucwords($this->dataReturn[$filterKey], $subitem[1] ?? ' ');
             break;
             case 'trim':
-                $this->dataReturn[$filterKey] = trim($this->dataReturn[$filterKey], $subitem[1]  = NULL);
+                $this->dataReturn[$filterKey] = trim($this->dataReturn[$filterKey], $subitem[1] ?? ' ');
             break;
             case 'upper':
                 $this->dataReturn[$filterKey] = strtoupper($this->dataReturn[$filterKey]);
@@ -117,7 +117,7 @@ class Filter {
                 $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_URL);
             break;
             case 'url_encode':
-                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_ENCODED, $subitem[1] = NULL);
+                $this->dataReturn[$filterKey] = filter_var($this->dataReturn[$filterKey], FILTER_SANITIZE_ENCODED);
             break;
         }
     }
