@@ -17,14 +17,14 @@ class Filter {
      */
     
     
-    public function set(array $datas, array $filters) {
+    public function set(array &$datas, array $filters) {
         $this->dataReturn = $datas;
         foreach($filters as $filterKey => $filterValue){
             if(isset($this->dataReturn[$filterKey])){
                 $this->filters($filterKey, $filterValue);
             }
         }
-        return $this->dataReturn;
+        $datas = $this->dataReturn;
     }
     
     

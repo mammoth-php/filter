@@ -18,6 +18,6 @@
         'senha' => 'trim|md5:true'
     ];
     
-    $datas = $filter->set($datas, $filters);
+    $filter->set($datas, $filters);
     
     var_dump($datas);
