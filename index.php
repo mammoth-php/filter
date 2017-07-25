@@ -27,5 +27,5 @@
     
     $filter->set($datas, $filters);
     
-     echo "Dados com filtros: <br/>";
+    echo "Dados com filtros: <br/>";
     var_dump($datas);
