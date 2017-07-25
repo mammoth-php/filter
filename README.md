@@ -82,7 +82,7 @@ $filters = [
 # Outros filtros
 
 * capitalize:     ` Transforma a inicial da palavra ou frase em maiúscula. `                         
-* date_format:    ` Define um formato de data para o valor do dado. ` `Ex: date:d/m/Y `     
+* date_format:    ` Define um formato de data para o valor do dado. ` `Ex: date_format:d/m/Y `     
 * lower:          ` Transforma a palavra ou frase em minúsculo. `    
 * round:          ` Arrendonda um valor com uma precisão. `  `Ex: round:2  `  
 * strip_tags:     ` Retira as tags HTML e PHP de uma string.  `           
