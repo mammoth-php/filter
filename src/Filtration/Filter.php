@@ -77,14 +77,20 @@ class Filter {
             case 'crypt': 
                $this->dataFiltered[$filterKey]  = crypt($this->dataFiltered[$filterKey], $item[1] ?? NULL);
             break;
-            case 'date': 
+            case 'date_format': 
                $this->dataFiltered[$filterKey]  = date($item[1], strtotime($this->dataFiltered[$filterKey]));
             break;
             case 'email': 
                $this->dataFiltered[$filterKey]  = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_EMAIL);
             break;
+            case 'escape': 
+               $this->dataFiltered[$filterKey]  = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_SPECIAL_CHARS);
+            break;
             case 'float': 
                $this->dataFiltered[$filterKey]  = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            break;
+            case 'html_entities': 
+               $this->dataFiltered[$filterKey]  = htmlentities($this->dataFiltered[$filterKey], ENT_QUOTES, 'UTF-8');
             break;
             case 'int': 
                $this->dataFiltered[$filterKey]  = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_NUMBER_INT);
@@ -127,6 +133,9 @@ class Filter {
             break;
             case 'url_encode':
                 $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_ENCODED);
+            break;
+            case 'whole_number': 
+               $this->dataFiltered[$filterKey]  = intval($this->dataFiltered[$filterKey], $item[1] ?? 10);
             break;
         }
     }
