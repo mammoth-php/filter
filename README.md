@@ -97,7 +97,7 @@ $filters = [
 * crypt:          ` Codifica o valor para crypt com um salt opcional.` `Ex: crypt:_J9..rasm' `
 * md5:            ` Codifica o valor para md5 com um raw_output opcional.` `Ex: md5:true `
 * pw_hash:        ` Codifica o valor para password_hash com o salt padrão PASSWORD_BCRYPT.`
-* sha1:           ` Codifica o valor para sha1 om um raw_output opcional.` `Ex: sha1:true `
+* sha1:           ` Codifica o valor para sha1 com um raw_output opcional.` `Ex: sha1:true `
 
 # Licença
 
