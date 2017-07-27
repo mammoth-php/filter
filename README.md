@@ -37,7 +37,7 @@ $filters = [
  ``` php
    $filter = new Mammoth\Filtration\Filter();
 
-   $filter->set($datas, $rules);
+   $filter->set($datas, $filters);
    
    // Verificar se houve as mudanças
    var_dump($datas);
