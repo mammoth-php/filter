@@ -1,6 +1,6 @@
 # Filter
 
-O Filter é uma classe de filtragem baseada em PHP que permite filtrar quaisquer dados.
+O Filter é uma classe de filtragem baseada em PHP-7 que permite filtrar quaisquer dados simples e fácil.
 
 # Instalação
 
@@ -12,7 +12,7 @@ $ composer require mammoth-php/filter
 
 # Exemplo de Filtragem dos dados
 
-###### Dados
+` Dados `
 
 ``` php
 $datas = [
@@ -22,7 +22,7 @@ $datas = [
 ];
 ```
 
-###### Filtros
+` Filtros `
 
 ``` php
 $filters = [
@@ -32,7 +32,7 @@ $filters = [
 ];
  ```
  
- ###### Validando os dados de acordo com os filtros
+ ` Filtrando(desinfetando e/ou convertendo) os dados de acordo com os filtros `
  
  ``` php
    $filter = new Mammoth\Filtration\Filter();
@@ -58,16 +58,20 @@ $filters = [
         'senha' => '  mammoth.web  '
     ];
     
+    echo 'Dados sem filtros: <br />';
+    var_dump($datas);
+    
     $filter->set($datas, [
         'nome'  => 'trim|capitalize',
         'email' => 'trim|lower|email',
         'senha' => 'trim|pw_hash'
     ]);
     
+    echo 'Dados com filtros: <br />';
     var_dump($datas);
 ```
 
-# Tipos de filtros
+# Tipos de filtros (sanitizers)
 
 * email:          ` Remove todos os caracteres, exceto letras, dígitos e ! # $% & '* + - =? ^ _ {|} ~ @. [] .` 
 * escape:         ` Remove '"<> & e caracteres com valor ASCII inferior a 32, além de codificar outros caracteres. `
@@ -82,7 +86,9 @@ $filters = [
 # Outros filtros
 
 * capitalize:     ` Transforma a inicial da palavra ou frase em maiúscula. `                         
-* date_format:    ` Define um formato de data para o valor do dado. ` `Ex: date_format:d/m/Y `     
+* date_format:    ` Define um formato de data para o valor do dado. ` `Ex: date_format:d/m/Y `
+* json_encode:    ` Retorna a representação JSON de um valor. `
+* json_decode:    ` Analisa a string codificada JSON e converte-a em uma variável do PHP. `
 * lower:          ` Transforma a palavra ou frase em minúsculo. `    
 * round:          ` Arrendonda um valor com uma precisão. `  `Ex: round:2  `  
 * strip_tags:     ` Retira as tags HTML e PHP de uma string.  `           
@@ -98,6 +104,8 @@ $filters = [
 * md5:            ` Codifica o valor para md5 com um raw_output opcional.` `Ex: md5:true `
 * pw_hash:        ` Codifica o valor para password_hash com o salt padrão PASSWORD_BCRYPT.`
 * sha1:           ` Codifica o valor para sha1 com um raw_output opcional.` `Ex: sha1:true `
+* sha512:         ` Codifica o valor para sha512 com um raw_output opcional.` `Ex: sha512:true `
+* whirlpool:      ` Codifica o valor para whirlpool com um raw_output opcional. ` `Ex: whirlpool:true `
 
 # Licença
 
