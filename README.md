@@ -87,15 +87,15 @@ $filters = [
 
 * capitalize:     ` Transforma a inicial da palavra ou frase em maiúscula. `                         
 * date_format:    ` Define um formato de data para o valor do dado. ` `Ex: date_format:d/m/Y `
-* json_encode:    ` Retorna a representação JSON de um valor. `
-* json_decode:    ` Analisa a string codificada JSON e converte-a em uma variável do PHP. `
+* json_encode:    ` Retorna a representação JSON de um valor com uma constante opcional inteira. ` `Ex: json_encode:8` 
+* json_decode:    ` Analisa a string codificada JSON e converte-a em uma variável do PHP. ` `Ex: json_decode:true`
 * lower:          ` Transforma a palavra ou frase em minúsculo. `    
 * round:          ` Arrendonda um valor com uma precisão. `  `Ex: round:2  `  
-* strip_tags:     ` Retira as tags HTML e PHP de uma string.  `           
-* title:          ` Transforma as iniciais de cada palavra ou frase em maiúsculas. `
-* trim:           ` Retira espaço no ínicio e final de uma string. `
+* strip_tags:     ` Retira as tags HTML e PHP de uma string.  ` `Ex: strip_tags:<br>`        
+* title:          ` Transforma as iniciais de cada palavra ou frase em maiúsculas com um delimitador opcional. ` `Ex: title:_ `
+* trim:           ` Retira espaço no ínicio e final de uma string com mascara de caracteres opcional. ` `Ex: trim:\t`
 * upper:          ` Transforma a palavra ou frase em maiúsculas. `
-* whole_number:   ` Retorna o valor inteiro da variável. `
+* whole_number:   ` Retorna o valor inteiro da variável com uma base de conversão opcional. ` `Ex: whole_number:8`
 
 # Filtros para criptografia
 
