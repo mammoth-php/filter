@@ -11,7 +11,7 @@ class Filter {
      */
     
     
-    private $dataFiltered;
+    private $data_filtered;
 
     
     /**
@@ -25,15 +25,15 @@ class Filter {
     
     
     public function set(array &$datas, array $filters) {
-        $this->dataFiltered = $datas;
+        $this->data_filtered = $datas;
         
-        foreach($filters as $filterKey => $filterValue){
-            if(isset($this->dataFiltered[$filterKey])){
-                $this->filters($filterKey, $filterValue);
+        foreach($filters as $filter_key => $filter_value){
+            if(isset($this->data_filtered[$filter_key])){
+                $this->filters($filter_key, $filter_value);
             }
         }
         
-        $datas = $this->dataFiltered;
+        $datas = $this->data_filtered;
     }
     
     
@@ -42,16 +42,16 @@ class Filter {
      * Definindo mais de um filtro para um determinado dado.
      * -------------------------------------------------------------------------
      * 
-     * @param type $filterKey
-     * @param type $filterValue
+     * @param type $filter_key
+     * @param type $filter_value
      */
     
     
-    private function filters($filterKey, $filterValue) {
-        $conditions = explode('|', $filterValue);
+    private function filters($filter_key, $filter_value) {
+        $conditions = explode('|', $filter_value);
         
         foreach($conditions as $condition){
-             $this->filtering($condition, $filterKey);
+             $this->filtering($condition, $filter_key);
         }
     }
     
@@ -62,94 +62,94 @@ class Filter {
      * ------------------------------------------------------------------------- 
      * 
      * @param type $condition
-     * @param type $filterKey
+     * @param type $filter_key
      */
     
     
-    private function filtering($condition, $filterKey) {
+    private function filtering($condition, $filter_key) {
         $item = explode(':', $condition);
         
         switch($item[0]){
             case 'base64_encode': 
-                $this->dataFiltered[$filterKey] = base64_encode($this->dataFiltered[$filterKey]);
+                $this->data_filtered[$filter_key] = base64_encode($this->data_filtered[$filter_key]);
             break;
             case 'capitalize': 
-                $this->dataFiltered[$filterKey] = ucfirst($this->dataFiltered[$filterKey]);
+                $this->data_filtered[$filter_key] = ucfirst($this->data_filtered[$filter_key]);
             break;
             case 'crypt': 
-                $this->dataFiltered[$filterKey] = crypt($this->dataFiltered[$filterKey], $item[1] ?? NULL);
+                $this->data_filtered[$filter_key] = crypt($this->data_filtered[$filter_key], $item[1] ?? NULL);
             break;
             case 'date_format': 
-                $this->dataFiltered[$filterKey] = date($item[1], strtotime($this->dataFiltered[$filterKey]));
+                $this->data_filtered[$filter_key] = date($item[1], strtotime($this->data_filtered[$filter_key]));
             break;
             case 'email': 
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_EMAIL);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_SANITIZE_EMAIL);
             break;
             case 'escape': 
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_SPECIAL_CHARS);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_SANITIZE_SPECIAL_CHARS);
             break;
             case 'float': 
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             break;
             case 'html_entities': 
-                $this->dataFiltered[$filterKey] = htmlentities($this->dataFiltered[$filterKey], ENT_QUOTES, 'UTF-8');
+                $this->data_filtered[$filter_key] = htmlentities($this->data_filtered[$filter_key], ENT_QUOTES, 'UTF-8');
             break;
             case 'int': 
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_NUMBER_INT);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_SANITIZE_NUMBER_INT);
             break;
             case 'json_encode': 
-                $this->dataFiltered[$filterKey] = json_encode($this->dataFiltered[$filterKey], $item[1] ?? NULL);
+                $this->data_filtered[$filter_key] = json_encode($this->data_filtered[$filter_key], $item[1] ?? NULL);
             break;
             case 'json_decode': 
-                $this->dataFiltered[$filterKey] = json_decode($this->dataFiltered[$filterKey], $item[1] ?? FALSE);
+                $this->data_filtered[$filter_key] = json_decode($this->data_filtered[$filter_key], $item[1] ?? FALSE);
             break;
             case 'lower': 
-                $this->dataFiltered[$filterKey] = strtolower($this->dataFiltered[$filterKey]);
+                $this->data_filtered[$filter_key] = strtolower($this->data_filtered[$filter_key]);
             break;
             case 'md5': 
-                $this->dataFiltered[$filterKey] = md5($this->dataFiltered[$filterKey], $item[1] ?? FALSE);
+                $this->data_filtered[$filter_key] = md5($this->data_filtered[$filter_key], $item[1] ?? FALSE);
             break;
             case 'pw_hash':
-                $this->dataFiltered[$filterKey] = password_hash($this->dataFiltered[$filterKey], PASSWORD_BCRYPT);
+                $this->data_filtered[$filter_key] = password_hash($this->data_filtered[$filter_key], PASSWORD_BCRYPT);
             break;
             case 'raw':
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_DEFAULT);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_DEFAULT);
             break;
             case 'round':
-                $this->dataFiltered[$filterKey] = round($this->dataFiltered[$filterKey], $item[1] ?? NULL);
+                $this->data_filtered[$filter_key] = round($this->data_filtered[$filter_key], $item[1] ?? NULL);
             break;
             case 'sha1':
-                $this->dataFiltered[$filterKey] = sha1($this->dataFiltered[$filterKey], $item[1] ?? FALSE);
+                $this->data_filtered[$filter_key] = sha1($this->data_filtered[$filter_key], $item[1] ?? FALSE);
             break;
             case 'sha512':
-                $this->dataFiltered[$filterKey] = hash('sha512', $this->dataFiltered[$filterKey], $item[1] ?? FALSE);
+                $this->data_filtered[$filter_key] = hash('sha512', $this->data_filtered[$filter_key], $item[1] ?? FALSE);
             break;
             case 'string':
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_STRING);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_SANITIZE_STRING);
             break;
             case 'strip_tags':
-                $this->dataFiltered[$filterKey] = strip_tags($this->dataFiltered[$filterKey], $item[1] ?? ' ');
+                $this->data_filtered[$filter_key] = strip_tags($this->data_filtered[$filter_key], $item[1] ?? ' ');
             break;
             case 'title':
-                $this->dataFiltered[$filterKey] = ucwords($this->dataFiltered[$filterKey], $item[1] ?? ' ');
+                $this->data_filtered[$filter_key] = ucwords($this->data_filtered[$filter_key], $item[1] ?? ' ');
             break;
             case 'trim':
-                $this->dataFiltered[$filterKey] = trim($this->dataFiltered[$filterKey], $item[1] ?? ' ');
+                $this->data_filtered[$filter_key] = trim($this->data_filtered[$filter_key], $item[1] ?? ' ');
             break;
             case 'upper':
-                $this->dataFiltered[$filterKey] = strtoupper($this->dataFiltered[$filterKey]);
+                $this->data_filtered[$filter_key] = strtoupper($this->data_filtered[$filter_key]);
             break;
             case 'url':
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_URL);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_SANITIZE_URL);
             break;
             case 'url_encode':
-                $this->dataFiltered[$filterKey] = filter_var($this->dataFiltered[$filterKey], FILTER_SANITIZE_ENCODED);
+                $this->data_filtered[$filter_key] = filter_var($this->data_filtered[$filter_key], FILTER_SANITIZE_ENCODED);
             break;
             case 'whirlpool': 
-                $this->dataFiltered[$filterKey] = hash('whirlpool', $this->dataFiltered[$filterKey], $item[1] ?? FALSE);
+                $this->data_filtered[$filter_key] = hash('whirlpool', $this->data_filtered[$filter_key], $item[1] ?? FALSE);
             break;
             case 'whole_number': 
-               $this->dataFiltered[$filterKey]  = intval($this->dataFiltered[$filterKey], $item[1] ?? 10);
+               $this->data_filtered[$filter_key]  = intval($this->data_filtered[$filter_key], $item[1] ?? 10);
             break;
         }
     }
